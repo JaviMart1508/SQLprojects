@@ -286,26 +286,26 @@ INSERT INTO public.galaxy VALUES (6, 'Small Magellanic Cloud', 'Irregular', 0.20
 -- Data for Name: moon; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.moon VALUES (21, 'Luna', 1.0000, 1.0000000, 27.3200, 3);
-INSERT INTO public.moon VALUES (22, 'Io', 1.0500, 1.2200000, 1.7700, 5);
-INSERT INTO public.moon VALUES (23, 'Europa', 0.9000, 0.6600000, 3.5500, 5);
-INSERT INTO public.moon VALUES (24, 'Ganymede', 1.5100, 2.0400000, 7.1500, 5);
-INSERT INTO public.moon VALUES (25, 'Callisto', 1.3800, 1.4700000, 16.6900, 5);
-INSERT INTO public.moon VALUES (26, 'Titan', 1.4900, 1.8700000, 15.9500, 6);
-INSERT INTO public.moon VALUES (27, 'Rhea', 0.4500, 0.0300000, 4.5200, 6);
-INSERT INTO public.moon VALUES (28, 'Iapetus', 0.5600, 0.0100000, 79.3300, 6);
-INSERT INTO public.moon VALUES (29, 'Dione', 0.3100, 0.0150000, 2.7400, 6);
-INSERT INTO public.moon VALUES (30, 'Tethys', 0.2700, 0.0050000, 1.8900, 6);
-INSERT INTO public.moon VALUES (31, 'Enceladus', 0.1400, 0.0005000, 1.3700, 6);
-INSERT INTO public.moon VALUES (32, 'Mimas', 0.1200, 0.0002000, 0.9400, 6);
-INSERT INTO public.moon VALUES (33, 'Triton', 0.7800, 0.2900000, 5.8800, 8);
-INSERT INTO public.moon VALUES (34, 'Deimos', 0.0018, 0.0000018, 1.2600, 4);
-INSERT INTO public.moon VALUES (35, 'Miranda', 0.0780, 0.0040000, 1.4100, 7);
-INSERT INTO public.moon VALUES (36, 'Ariel', 0.2100, 0.0780000, 2.5200, 7);
-INSERT INTO public.moon VALUES (37, 'Umbriel', 0.1900, 0.0700000, 4.1400, 7);
-INSERT INTO public.moon VALUES (38, 'Titania', 0.2900, 0.1800000, 8.7100, 7);
-INSERT INTO public.moon VALUES (39, 'Oberon', 0.2800, 0.1600000, 13.4600, 7);
-INSERT INTO public.moon VALUES (40, 'Phobos', 0.0023, 0.0000014, 0.3200, 4);
+INSERT INTO public.moon VALUES (1, 'Luna', 1.0000, 1.0000000, 27.3200, 3);
+INSERT INTO public.moon VALUES (2, 'Io', 1.0500, 1.2200000, 1.7700, 5);
+INSERT INTO public.moon VALUES (3, 'Europa', 0.9000, 0.6600000, 3.5500, 5);
+INSERT INTO public.moon VALUES (4, 'Ganymede', 1.5100, 2.0400000, 7.1500, 5);
+INSERT INTO public.moon VALUES (5, 'Callisto', 1.3800, 1.4700000, 16.6900, 5);
+INSERT INTO public.moon VALUES (6, 'Titan', 1.4900, 1.8700000, 15.9500, 6);
+INSERT INTO public.moon VALUES (7, 'Rhea', 0.4500, 0.0300000, 4.5200, 6);
+INSERT INTO public.moon VALUES (8, 'Iapetus', 0.5600, 0.0100000, 79.3300, 6);
+INSERT INTO public.moon VALUES (9, 'Dione', 0.3100, 0.0150000, 2.7400, 6);
+INSERT INTO public.moon VALUES (10, 'Tethys', 0.2700, 0.0050000, 1.8900, 6);
+INSERT INTO public.moon VALUES (11, 'Enceladus', 0.1400, 0.0005000, 1.3700, 6);
+INSERT INTO public.moon VALUES (12, 'Mimas', 0.1200, 0.0002000, 0.9400, 6);
+INSERT INTO public.moon VALUES (13, 'Triton', 0.7800, 0.2900000, 5.8800, 8);
+INSERT INTO public.moon VALUES (14, 'Deimos', 0.0018, 0.0000018, 1.2600, 4);
+INSERT INTO public.moon VALUES (15, 'Miranda', 0.0780, 0.0040000, 1.4100, 7);
+INSERT INTO public.moon VALUES (16, 'Ariel', 0.2100, 0.0780000, 2.5200, 7);
+INSERT INTO public.moon VALUES (17, 'Umbriel', 0.1900, 0.0700000, 4.1400, 7);
+INSERT INTO public.moon VALUES (18, 'Titania', 0.2900, 0.1800000, 8.7100, 7);
+INSERT INTO public.moon VALUES (19, 'Oberon', 0.2800, 0.1600000, 13.4600, 7);
+INSERT INTO public.moon VALUES (20, 'Phobos', 0.0023, 0.0000014, 0.3200, 4);
 
 
 --
