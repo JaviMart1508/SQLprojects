@@ -8,50 +8,67 @@ MAIN_MENU () {
 
   if [[ $1 ]]
   then
-    echo -e "\n$1"
+    echo -e "\n$1\n"
   fi
 
-  echo -e "\nWelcome, how can I help you today?\n"
-  
-  SERVICES=$($PSQL "SELECT service_id, name FROM services ORDER BY service_id;")
+  #List of available services
+  S_AV=$($PSQL "SELECT service_id, name FROM services ORDER BY service_id")
 
-  echo "$SERVICES" | while read SERVICE_ID BAR NAME
+  #Display available services
+  echo "$S_AV" | while read S BAR N
   do
-    echo "$SERVICE_ID) $NAME"
+    echo "$S) $N"
   done
 
+  #Ask for a service
+  echo -e "\nPlease select a service."
   read SERVICE_ID_SELECTED
 
-  if [[ ! $SERVICE_ID_SELECTED =~ ^[1-6]$ ]]
+  #If it's not in the range of services
+  if [[ ! $SERVICE_ID_SELECTED =~ ^[1-5]$ ]]
   then
-    MAIN_MENU "Please, select a valid service."
+    MAIN_MENU "Sorry, we couldn't find that service."
   else
-    SERVICE=$($PSQL "SELECT name FROM services WHERE service_id=$SERVICE_ID_SELECTED")
-    SERVICE_FORMATTED=$(echo $SERVICE | sed -E 's/^ *| *$//g')
-    
-    echo -e "\nWhat is your phone number?"
+    #Ask for a phone number
+    echo -e "\nWhat's your phone number?"
     read CUSTOMER_PHONE
 
+    #Search customer's name in database
     CUSTOMER_NAME=$($PSQL "SELECT name FROM customers WHERE phone='$CUSTOMER_PHONE';")
-    NAME_FORMATTED=$(echo $CUSTOMER_NAME | sed -E 's/^ *| *$//g')
 
+    #If not in database
     if [[ -z $CUSTOMER_NAME ]]
     then
-      echo -e "\nWhat is your name?"
-      read CUSTOMER_NAME
-      NAME_FORMATTED=$(echo $CUSTOMER_NAME | sed -E 's/^ *| *$//g')
-      INSERT_CUSTOMER=$($PSQL "INSERT INTO customers(name, phone) VALUES('$CUSTOMER_NAME','$CUSTOMER_PHONE');")
+     #Ask for customer's name
+     echo -e "\nWhat's your name?"
+     read CUSTOMER_NAME
+     
+     #Insert customer
+     IC=$($PSQL "INSERT INTO customers(phone,name) VALUES('$CUSTOMER_PHONE','$CUSTOMER_NAME');")
     fi
-    CUSTOMER_ID=$($PSQL "SELECT customer_id FROM customers WHERE phone='$CUSTOMER_PHONE';")
 
-    echo -e "\nWhat time would you like your $SERVICE_FORMATTED, $NAME_FORMATTED?"
+    #Ask for a time
+    echo -e "\nWhat time would you be available?"
     read SERVICE_TIME
 
-    TIME_FORMATTED=$(echo $SERVICE_TIME | sed -E 's/^ *| *$//g')
-    INSERT_APPOINTMENT=$($PSQL "INSERT INTO appointments(customer_id, service_id, time) VALUES($CUSTOMER_ID, $SERVICE_ID_SELECTED, '$SERVICE_TIME');")
+    #Get customer ID
+    CID=$($PSQL "SELECT customer_id FROM customers WHERE phone='$CUSTOMER_PHONE';")
 
-    echo -e "\nI have put you down for a $SERVICE_FORMATTED at $TIME_FORMATTED, $NAME_FORMATTED."
+    #Insert appointment
+    IA=$($PSQL "INSERT INTO appointments(customer_id,service_id, time) VALUES($CID,$SERVICE_ID_SELECTED,'$SERVICE_TIME');")
+    
+    #Get service name
+    S=$($PSQL "SELECT name FROM services WHERE service_id='$SERVICE_ID_SELECTED'")
 
+    #Format all the variables
+    S=$( echo $S | sed -E 's/^ *| *$//g')
+    N=$( echo $CUSTOMER_NAME | sed -E 's/^ *| *$//g')
+    T=$( echo $SERVICE_TIME | sed -E 's/^ *| *$//g')
+
+    #Display the final message
+    echo -e "\nI have put you down for a $S at $T, $N."
+
+  
   fi
 
 }
